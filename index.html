@@ -68,29 +68,24 @@
     <div class="row collapse">
       <div class="large-8 columns">
         <div class="side-pusher2">
-          <h4><strong>Governing Green Power II:<br>How should utilities of the future make money?</strong></h4>
-          <h5><strong>University of Hawai‘i at Mānoa<br>
-Innovation Laboratory -- iLab (<a href="https://ilab.hawaii.edu/" target="_blank" rel="noopener noreferrer">directions and map</a>)</strong></h5>
-          <p>Growth of renewable energy, reduced economies of scale, rapidly falling storage costs, network communication technologies,
-            plus customer self-generation, load shifting and efficiency options, all have the potential to dramatically change
-            the nature of electricity systems. Underlying this is the eroding viability of incumbent regulatory models that
-            govern utility revenue and profit.</p>
-          <p>Key issues that this conference will address:</p>
-          <ul>
-            <li>Profit of investor-owned utilities is typically tied to rate of return on capital investments, which sets the
-              wrong incentive for utilities to promote less capital-intensive ways of integrating renewables, such as demand
-              response.
-            </li>
-            <li>Current volumetric (i.e., per kWh) rates and demand charges do not reflect underlying marginal costs, creating
-              inefficiencies that will become more severe as renewable penetration grows.</li>
-            <li>As renewables and storage grow, fixed costs will increasingly replace fuel costs, making marginal costs more
-              variable and more difficult to determine.</li>
-            <li>A potentially large shortfall in revenue from efficient volumetric pricing in covering all fixed costs.</li>
-            <li>Alternative ways of covering fixed costs not covered by efficient volumetric pricing.</li>
-          </ul>
-          <blockquote>
-            <p><a href="./events/conference2017.html">View 2017 Conference</a></p>
-          </blockquote>
+          <h4>Governing Green Power</h4>
+          <h5>Ideas and research to inform a better transition to clean renewable energy</h5>
+          <div>
+            <p>Our group is a diverse mix of faculty at the University of Hawai‘i at Mānoa, plus a few others from the community
+              intimately involved with our renewable energy transition. We call ourselves the Governing Green Power Steering
+              Group.
+            </p>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="side-pusher2" id="working-papers">
+            <h4>Working Papers</h4>
+          </div>
+        </div>
+        <div class="large-6 columns">
+          <div class="side-pusher2" id="blog-feed">
+            <h4><a href="https://govgreenpower.com/" target="_blank" rel="noopener noreferrer">Governing Green Power Blog</a></h4>
+          </div>
         </div>
       </div>
       <div class="large-4 columns">
@@ -148,28 +143,43 @@ Innovation Laboratory -- iLab (<a href="https://ilab.hawaii.edu/" target="_blank
   <script src="./_js/vendor/what-input.min.js"></script>
   <script src="./_js/foundation.min.js"></script>
   <script>
-    $(document).ready(function() {
-      $.get('./events/index.html', function(response) {
-        console.log($(response).find('#events p').length)
+    $(document).ready(function () {
+      $.get('./events/index.html', function (response) {
         // let $events = $(response).find('#events p').html();
-        let $events = $(response).find('#events p');
+        const $events = $(response).find('#events p');
         $events.each((el) => {
-          console.log('el', $($events[el]).html())
           $('#events-list').append('<p>' + $($events[el]).html() + '</p>');
 
         })
-        console.log('events', $events)
       })
     })
-    /* $.ajax({
+    $.ajax({
       type: 'GET',
       url: "https://api.rss2json.com/v1/api.json?rss_url=" + 'https%3A%2F%2Fgovgreenpower.com%2Ffeed%2F',
-      dataType: 'jsonp',
+      dataType: 'json',
       success: function (data) {
-        console.log(data.feed.description);
-        console.log(data);
+        const maxPosts = data.items.length < 3 ? data.items.length : 3;
+        for (let i = 0; i < maxPosts; i++) {
+          let postHtml = '';
+          const blog = data.items[i];
+          const title = '<a href="' + blog.link + '" target="_blank" rel="noopener noreferrer">' + blog.title + '</a>';
+          const date = '<span>' + formatDate(blog.pubDate.substr(0, 10)) + '</span>';
+          const author = '<b>' + blog.author + '</b>';
+          const thumbnail = blog.thumbnail ? '<img src="' + blog.thumbnail + '" style="max-width:50%;float:left;margin:0px 10px 1px 0px;">' : '';
+          // Remove html tags from blog content and display first 150 characters
+          const content = truncatePost($('<p>' + blog.content + '</p>').text(), 150, ' ');
+          postHtml += thumbnail + title + '<br>' + date + ' by ' + author + '<p>' + content + '... ' + '<a href="' + blog.link + '" target="_blank" rel="noopener noreferrer">Read More</p><hr>';
+          $('#blog-feed').append(postHtml);
+        }
       }
-    }); */
+    });
+    function truncatePost(string, maxLength, separator) {
+      return string.length <= maxLength ? string : string.substr(0, string.lastIndexOf(separator, maxLength));
+    }
+    function formatDate(date) {
+      const split = date.split('-');
+      return new Date(+split[0], +split[1] - 1, +split[2]).toDateString();
+    }
   </script>
   <script>
     (function (i, s, o, g, r, a, m) {
