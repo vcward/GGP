@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Governing Green Power: Realigning Institutions to Fit New Technologies - University of Hawaiʻi at Mānoa, March 28-30, 2017</title>
+  <title>Governing Green Power - University of Hawaiʻi at Mānoa</title>
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
   <META HTTP-EQUIV="Expires" CONTENT="-1">
   <link rel="stylesheet" href="_css/foundation.css" />
@@ -41,11 +41,26 @@
 
 <body>
   <div class="row wrapper">
-
-    <!--NEXT -->
-
     <div class="row collapse">
-      <div class="large-12 columns"><a href="index.html"><img src="_img/banner2.png"></a></div>
+      <div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle="nav-menu"></button>
+        <div class="title-bar-title">Menu</div>
+      </div>
+
+      <div class="top-bar" id="nav-menu">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text show-for-small-only"><span style="text-align:center;color:#FFF;font-size:1.2rem;font-weight:normal;text-rendering:optimizeLegibility;">GGP: University of Hawai‘i at Mānoa</span></li>
+            <li class="menu-text show-for-medium" style="text-align:center;color:#FFF;"><a href="./"><span style="font-size:1.8rem;line-height:1.25;">Governing Green Power</span><br><span style="font-weight:normal;text-rendering:optimizeLegibility;letter-spacing:0.05em;">University of Hawai‘i at Mānoa</span></a></li>
+            <li><a href="./about">About</a></li>
+            <li><a href="./events">Events</a></li>
+            <li><a href="./research">Research</a></li>
+            <li><a href="./donate">Donate</a></li>
+            <li><a href="http://www.uhero.hawaii.edu">UHERO</a></li>
+            <li><a href="http://seagrant.soest.hawaii.edu/">Sea Grant</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!--NEXT -->
@@ -79,27 +94,34 @@
         </div>
         <div class="large-6 columns">
           <div class="side-pusher2" id="working-papers">
-            <h4>Working Papers</h4>
+            <h5><a href="./research/index.html">Working Papers</a></h5>
+            <!-- See JS at end of document. Element gets data from ./research/index.html -->
+            <!-- To add to list, add working paper info to /research/index.html -->
           </div>
         </div>
         <div class="large-6 columns">
           <div class="side-pusher2" id="blog-feed">
-            <h4><a href="https://govgreenpower.com/" target="_blank" rel="noopener noreferrer">Governing Green Power Blog</a></h4>
+            <h5><a href="https://govgreenpower.com/" target="_blank" rel="noopener noreferrer">Governing Green Power Blog</a></h5>
+            <!-- See JS at end of document -->
           </div>
         </div>
       </div>
       <div class="large-4 columns">
         <div class="side-pusher2">
-          <div class="card events">
-            <div class="card-divider" style="background-color:yellowgreen;padding:0.25em 0.5em;">
+          <div class="card events" style="margin-bottom: 10px;">
+            <div class="card-divider" style="background-color:yellowgreen;padding:0.25em 1em;">
               <strong>Events</strong>
             </div>
-            <div class="card-section" id="events-list" style="background-color:#f1f1f1;padding:0.25em 0.5em;">
+            <div class="card-section" id="events-list" style="background-color:#f1f1f1;padding:0.25em 1em;">
               <!-- See JS at end of document. Element gets data from ./events/index.html -->
+              <!-- To add to list, add event info to /events/index.html -->
             </div>
           </div>
-          <a class="twitter-timeline" href="https://twitter.com/govgreenpower" data-chrome="nofooter noborders" data-height="500">Tweets by GoverningGreenPower</a>
-          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <div style="background-color:#F1F1F1;">
+            <p style="background-color:yellowgreen;font-weight:normal;padding:0.25em 1em;margin-bottom:0;"><strong style="font-size:19px;">Tweets</strong> by <a href="https://twitter.com/govgreenpower" target="_blank" rel="noopener noreferrer">@govgreenpower</a></p>
+            <a class="twitter-timeline" href="https://twitter.com/govgreenpower" data-chrome="noheader nofooter noborders transparent" data-height="500">Tweets by GoverningGreenPower</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
         </div>
       </div>
     </div>
@@ -144,31 +166,44 @@
   <script src="./_js/foundation.min.js"></script>
   <script>
     $(document).ready(function () {
+      $(document).foundation();
       $.get('./events/index.html', function (response) {
-        // let $events = $(response).find('#events p').html();
+        // Display upcoming events
         const $events = $(response).find('#events p');
+        if (!$events.length) {
+          $('#events-list').append('<p>Coming Soon</p>');
+        }
         $events.each((el) => {
           $('#events-list').append('<p>' + $($events[el]).html() + '</p>');
-
+          if (el !== $events.length - 1) {
+            $('#events-list').append('<hr>');
+          }
+        });
+      });
+      $.get('./research/index.html', function (response) {
+        // Display 10 most recent working papers
+        const $wp = $(response).find('#wp-list p').slice(0, 10);
+        $wp.each((paper) => {
+          $('#working-papers').append('<p  style="font-size: 0.8em;">' + $($wp[paper]).html() + '</p>');
         })
-      })
-    })
+      });
+    });
     $.ajax({
       type: 'GET',
       url: "https://api.rss2json.com/v1/api.json?rss_url=" + 'https%3A%2F%2Fgovgreenpower.com%2Ffeed%2F',
       dataType: 'json',
       success: function (data) {
+        // Display 3 most recent blog posts
         const maxPosts = data.items.length < 3 ? data.items.length : 3;
         for (let i = 0; i < maxPosts; i++) {
           let postHtml = '';
           const blog = data.items[i];
           const title = '<a href="' + blog.link + '" target="_blank" rel="noopener noreferrer">' + blog.title + '</a>';
-          const date = '<span>' + formatDate(blog.pubDate.substr(0, 10)) + '</span>';
-          const author = '<b>' + blog.author + '</b>';
+          const byline = '<span style="font-size: 0.93em;">' + formatDate(blog.pubDate.substr(0, 10)) + ' by <b>' + blog.author + '</b></span>';
           const thumbnail = blog.thumbnail ? '<img src="' + blog.thumbnail + '" style="max-width:50%;float:left;margin:0px 10px 1px 0px;">' : '';
           // Remove html tags from blog content and display first 150 characters
           const content = truncatePost($('<p>' + blog.content + '</p>').text(), 150, ' ');
-          postHtml += thumbnail + title + '<br>' + date + ' by ' + author + '<p>' + content + '... ' + '<a href="' + blog.link + '" target="_blank" rel="noopener noreferrer">Read More</p><hr>';
+          postHtml += thumbnail + title + '<br>' + byline + '<p>' + content + '... ' + '<a href="' + blog.link + '" target="_blank" rel="noopener noreferrer">Read More</p><hr>';
           $('#blog-feed').append(postHtml);
         }
       }

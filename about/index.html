@@ -22,10 +22,12 @@
             vertical-align: top;
         }
 
-        .sponsor {
+        .about-img {
             -moz-box-shadow: 0 0 6px #666;
             -webkit-box-shadow: 0 0 6px #666;
             box-shadow: 0 0 6px #666;
+            height: 128px;
+            max-width: 116px;
         }
 
         ol ol.agenda-nested-list {
@@ -43,11 +45,26 @@
 
 <body>
     <div class="row wrapper">
-
-        <!--NEXT -->
-
         <div class="row collapse">
-            <div class="large-12 columns"><a href="../index.html"><img src="../_img/banner2.png"></a></div>
+            <div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle="nav-menu"></button>
+                <div class="title-bar-title">Menu</div>
+            </div>
+
+            <div class="top-bar" id="nav-menu">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text show-for-small-only"><span style="text-align:center;color:#FFF;font-size:1.2rem;font-weight:normal;text-rendering:optimizeLegibility;">GGP: University of Hawai‘i at Mānoa</span></li>
+                        <li class="menu-text show-for-medium" style="text-align:center;color:#FFF;"><a href="../"><span style="font-size:1.8rem;line-height:1.25;">Governing Green Power</span><br><span style="font-weight:normal;text-rendering:optimizeLegibility;letter-spacing:0.05em;">University of Hawai‘i at Mānoa</span></a></li>
+                        <li><a href="./">About</a></li>
+                        <li><a href="../events">Events</a></li>
+                        <li><a href="../research">Research</a></li>
+                        <li><a href="../donate">Donate</a></li>
+                        <li><a href="http://www.uhero.hawaii.edu">UHERO</a></li>
+                        <li><a href="http://seagrant.soest.hawaii.edu/">Sea Grant</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!--NEXT -->
@@ -58,19 +75,15 @@
 
         <div class="row collapse botnumber">
             <div class="large-12 columns">
-                <div id="owl-demo" class="owl-carousel">
-                    <div class="item"><img src="../_owl/slide-01.jpg" alt=""></div>
-                    <div class="item"><img src="../_owl/slide-02.jpg" alt=""></div>
-                    <div class="item"><img src="../_owl/slide-03.jpg" alt=""></div>
-                </div>
+                <div class="item"><img src="../_owl/slide-01.jpg" alt=""></div>
             </div>
         </div>
 
         <!--NEXT -->
-        <div class="row collapse">
+        <div class="row collapse" style="margin-top:20px;">
             <div class="large-12 columns">
                 <div class="side-pusher2">
-                    <h4>About</h4>
+                    <h4 style="color:#617763;">About</h4>
                     <div>
                         <p>Technological advance has markedly reduced the cost of renewable energy, particularly wind and solar.
                             But since these power sources are intermittent and less controllable than traditional fossil
@@ -86,7 +99,91 @@
                             limit the extent of global warming.</p>
                         <p>Our group is a diverse mix of faculty at the University of Hawai‘i at Mānoa, plus a few others from
                             the community intimately involved with our renewable energy transition. We call ourselves the
-                            Governing Green Power Steering Group. At present, our group is comprise of:
+                            Governing Green Power Steering Group. At present, our group is comprised of:
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--NEXT -->
+
+        <div class="row collapse">
+            <div class="side-pusher">
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/cbonham.jpg" alt="Carl Bonham" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://www.uhero.hawaii.edu/32/" target="_blank" rel="noopener noreferrer"><b>Carl Bonham</b></a><br>Director
+                        the University of Hawai‘i Economic Research Organization (UHERO)</p>
+                </div>
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/mcoffman.jpg" alt="Makena Coffman" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://manoa.hawaii.edu/durp/makena-coffman/" target="_blank" rel="noopener noreferrer"><b>Makena Coffman</b></a><br>Professor
+                        and Chair<br>Department of Urban Planning, and UHERO Affiliate, University of Hawai‘i at Mānoa</p>
+                </div>
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/cfreedman.jpg" alt="Carl Freedman" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://www.ct-si.org/events/APCE2011/bio.html?id=36" target="_blank" rel="noopener noreferrer"><b>Carl Freedman</b></a><br>Consultant
+                        specializing in public utility regulatory affairs</p>
+                </div>
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/mfripp.jpg" alt="Matthias Fripp" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://ee.hawaii.edu/~mfripp/" target="_blank" rel="noopener noreferrer"><b>Matthias Fripp</b></a><br>Assistant
+                        Professor
+                        <br>Department of Engineering, and UHERO Affiliate, University of Hawai‘i at Mānoa</p>
+                </div>
+            </div>
+        </div>
+
+        <!--NEXT -->
+
+        <div class="row collapse">
+            <div class="side-pusher">
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/mglick.jpg" alt="Mark Glick" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="https://www.hnei.hawaii.edu/staff/mark-b-glick" target="_blank" rel="noopener noreferrer"><b>Mark Glick</b></a><br>Specialist<br>Hawai‘i
+                        Natural Energy Institute, University of Hawai‘i at Mānoa</p>
+                </div>
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/imoriwake.jpg" alt="Isaac Moriwake" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="https://earthjustice.org/about/staff/isaac-moriwake" target="_blank" rel="noopener noreferrer"><b>Isaac Moriwake</b></a><br>Attorney<br>EarthJustice</a>
+                    </p>
+                </div>
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/dpratt.jpg" alt="Dick Pratt" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://www.socialsciences.hawaii.edu/profile/index.cfm?email=pratt@hawaii.edu" target="_blank"
+                            rel="noopener noreferrer"><b>Dick Pratt</b></a><br>Professor Emeritus<br>Public Policy<br>University
+                        of Hawai‘i at Mānoa</p>
+                </div>
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/mroberts.jpg" alt="Michael Roberts" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://www2.hawaii.edu/~mjrobert/" target="_blank" rel="noopener noreferrer"><b>Michael Roberts</b></a><br>Professor<br>Economics,
+                        Sea Grant and UHERO Affiliate, University of Hawai‘i at Mānoa</p>
+                </div>
+            </div>
+        </div>
+
+        <!--NEXT -->
+
+        <div class="row collapse">
+            <div class="side-pusher">
+                <div class="large-3 medium-6 small-6 columns">
+                    <p style="text-align:center"><img src="./img/swee.jpg" alt="Sherilyn Wee" class="about-img"></p>
+                    <p style="text-align:center;line-height:1.2;font-size:0.9em;"><a href="http://uhero.hawaii.edu/43/sherilyn-wee" target="_blank" rel="noopener noreferrer"><b>Sherilyn Wee</b></a><br>Economist<br>Office
+                        of Consumer Advocacy, State of Hawai‘i and UHERO</p>
+                </div>
+            </div>
+        </div>
+
+        <!--NEXT -->
+        <div class="row collapse">
+            <div class="large-12 columns">
+                <div class="side-pusher2">
+                    <div>
+                        <p>By design, we are a diverse bunch, and while we share the goals described above, we possess a a range
+                            of viewpoints about how to achieve those goals. Views expressed here are those of the individual
+                            authors, not necessarily those of the University of Hawai‘i or other institutions with which
+                            any of us are affiliated, or of our group as whole. To further broaden our views, comments from
+                            the community are welcomed.
                         </p>
                     </div>
                 </div>
@@ -110,23 +207,7 @@
     </div>
     <script>
         $(document).ready(function () {
-            $("#owl-demo").owlCarousel({
-
-                navigation: false,
-                responsive: true,
-                slideSpeed: 200,
-                paginationSpeed: 300,
-                autoPlay: true,
-                singleItem: true
-
-                // "singleItem:true" is a shortcut for:
-                // items : 1, 
-                // itemsDesktop : false,
-                // itemsDesktopSmall : false,
-                // itemsTablet: false,
-                // itemsMobile : false
-
-            });
+            $(document).foundation();
         });
     </script>
     <script src="../_js/vendor/what-input.min.js"></script>
