@@ -93,8 +93,8 @@
           </div>
         </div>
         <div class="large-6 columns">
-          <div class="side-pusher2" id="working-papers">
-            <h5><a href="./research/index.html">Working Papers</a></h5>
+          <div class="side-pusher2" id="research">
+            <h5><a href="./research/index.html">Latest Research</a></h5>
             <!-- See JS at end of document. Element gets data from ./research/index.html -->
             <!-- To add to list, add working paper info to /research/index.html -->
           </div>
@@ -182,9 +182,9 @@
       });
       $.get('./research/index.html', function (response) {
         // Display 10 most recent working papers
-        const $wp = $(response).find('#wp-list p').slice(0, 10);
-        $wp.each((paper) => {
-          $('#working-papers').append('<p  style="font-size: 0.8em;">' + $($wp[paper]).html() + '</p>');
+        const $research = $(response).find('#wp-list p').slice(0, 10);
+        $research.each((r) => {
+          $('#research').append('<p  style="font-size: 0.8em;">' + $($research[r]).html() + '</p>');
         })
       });
     });
