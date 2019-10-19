@@ -174,11 +174,14 @@
           $('#events-list').append('<p>Coming Soon</p>');
         }
         $events.each((el) => {
-          $('#events-list').append('<p>' + $($events[el]).html() + '</p>');
+          let link = $($events[el]).html();
+          link = `${link.substring(0, 10)}/events${link.substring(10)}`;
+          $('#events-list').append(`<p>${link}</p>`);
           if (el !== $events.length - 1) {
             $('#events-list').append('<hr>');
           }
         });
+        $('#events-list').append(`<a href="./events"}">More Events</a>`)
       });
       $.get('./research/index.html', function (response) {
         // Display 10 most recent working papers
@@ -228,5 +231,15 @@
     ga('send', 'pageview');
   </script>
 </body>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119654228-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119654228-2');
+</script>
 
 </html>
